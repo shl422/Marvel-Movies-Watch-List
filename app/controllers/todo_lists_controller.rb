@@ -67,4 +67,12 @@ class TodoListsController < ApplicationController
     def todo_list_params
       params.require(:todo_list).permit(:title, :description)
     end
+
+    def destroy
+      @todo_list.destroy
+      respond_to do |format|
+        format.html { redirect_to root_url, notice: 'Todo list was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
 end
